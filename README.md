@@ -1,6 +1,9 @@
-# ETLcaspian - Autonomous Driving Data Pipeline
+# ETLcaspian - Streaming ETL Pipeline (Kafka + Spark + Airflow)
 
-An Apache Airflow-based ETL pipeline for processing autonomous vehicle telemetry data.
+A real-time streaming ETL pipeline with Apache Kafka, Apache Spark, and Apache Airflow for processing autonomous vehicle telemetry data.
+
+## ⚠️ This is the STREAMING setup with Kafka & Spark
+For the basic ETL pipeline (without streaming), use the parent directory's `docker-compose.yml`
 
 ## 🚀 Features
 
@@ -53,21 +56,26 @@ docker-compose up -d
 ```
 
 This will:
-- Start PostgreSQL database
+- Start PostgreSQL database (port 5434)
+- Start Zookeeper (port 2181)
+- Start Kafka (port 29092)
+- Start Spark Master (port 7077, UI on 8081)
+- Start Spark Worker
 - Initialize Airflow database
 - Create admin user (username: `admin`, password: `admin`)
-- Start Airflow webserver and scheduler
+- Start Airflow webserver (port 8082) and scheduler
 
-### 3. Access Airflow UI
+### 3. Access Services
 
-Open your browser and navigate to:
-```
-http://localhost:8080
-```
-
-Login credentials:
+**Airflow UI**: http://localhost:8082 (Note: Port 8082, not 8080!)
 - **Username**: `admin`
 - **Password**: `admin`
+
+**Spark Master UI**: http://localhost:8081
+
+**Kafka**: localhost:29092
+
+**PostgreSQL**: localhost:5434
 
 ### 4. Enable the DAG
 
