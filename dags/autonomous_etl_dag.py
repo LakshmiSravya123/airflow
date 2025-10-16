@@ -23,7 +23,7 @@ dag = DAG(
     'autonomous_etl_pipeline',
     default_args=default_args,
     description='ETL pipeline for autonomous driving data',
-    schedule_interval='@daily',
+    schedule='@daily',
     catchup=False,
 )
 
